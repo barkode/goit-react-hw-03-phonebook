@@ -5,6 +5,8 @@ import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 import css from './App.module.css';
 
+const LS_KEY = 'contacts';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -22,7 +24,7 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
+    const contacts = localStorage.getItem(LS_KEY);
     const parseContacts = JSON.parse(contacts);
     if (parseContacts) {
       this.setState({ contacts: parseContacts });
