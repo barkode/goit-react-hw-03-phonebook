@@ -26,8 +26,11 @@ export class App extends Component {
   componentDidMount() {
     const contacts = localStorage.getItem(LS_KEY);
     const parseContacts = JSON.parse(contacts);
-    if (parseContacts) {
+    if (parseContacts && parseContacts.length !== 0) {
+      console.log(parseContacts.length);
       this.setState({ contacts: parseContacts });
+    } else {
+      localStorage.removeItem(LS_KEY);
     }
   }
 
